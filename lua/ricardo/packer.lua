@@ -33,7 +33,12 @@ return require('packer').startup(function(use)
 
   use('easymotion/vim-easymotion')
 
-  use('KarimElghamry/vim-auto-comment')
+  use({
+      'windwp/nvim-ts-autotag',
+      config = function()
+          require('nvim-ts-autotag').setup()
+      end
+  })
 
   use({
     'm4xshen/autoclose.nvim',
@@ -43,6 +48,21 @@ return require('packer').startup(function(use)
   })
 
   use('f-person/git-blame.nvim')
+
+  use {'akinsho/git-conflict.nvim', tag = "*", config = function()
+      require('git-conflict').setup()
+  end}
+
+  use({
+      'jose-elias-alvarez/null-ls.nvim',
+      requires = {
+          {'nvim-lua/plenary.nvim'}
+      }
+  })
+
+  use('neovim/nvim-lspconfig')
+
+  use('simrat39/rust-tools.nvim')
 
   use {
 	  'VonHeikemen/lsp-zero.nvim',

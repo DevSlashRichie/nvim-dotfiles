@@ -5,13 +5,11 @@ lsp.preset('recommended')
 lsp.ensure_installed({
 	'tsserver',
 	'eslint',
-	'rust_analyzer',
 })
 
 lsp.format_on_save({
     servers = {
         ['lua_ls'] = {'lua'},
-        ['rust_analyzer'] = {'rust'}
     }
 })
 
@@ -25,7 +23,7 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 })
 
 lsp.setup_nvim_cmp({
-	mapping = cmp_mappings
+	mapping = cmp_mappings,
 })
 
 lsp.on_attach(function(client, bufnr)
@@ -45,4 +43,22 @@ lsp.on_attach(function(client, bufnr)
 
 end)
 
+local lsp_rust = lsp.build_options('rust_analyzer', {})
+
 lsp.setup()
+
+local null_ls = require('null-ls')
+local null_opts = lsp.build_options('null-ls', {})
+
+null_ls.setup({
+    on_attach = function(client, bufnr)
+        null_opts.on_attach(client, bufnr)
+        --- you can add more stuff here if you need it
+    end,
+    sources = {
+        null_ls.builtins.formatting.black,
+    }
+})
+
+
+require('rust-tools').setup({server = lsp_rust})
