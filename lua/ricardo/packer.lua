@@ -8,10 +8,10 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
-  use {
+  use({
 	  'nvim-telescope/telescope.nvim', tag = '0.1.1',
 	  requires = { {'nvim-lua/plenary.nvim'} }
-  }
+  })
 
   use({ 
       'rose-pine/neovim',
@@ -49,9 +49,20 @@ return require('packer').startup(function(use)
 
   use('f-person/git-blame.nvim')
 
-  use {'akinsho/git-conflict.nvim', tag = "*", config = function()
-      require('git-conflict').setup()
-  end}
+  use({
+      'akinsho/git-conflict.nvim', 
+      tag = "*", 
+      config = function()
+          require('git-conflict').setup()
+      end
+  })
+
+
+  use({
+      'stevearc/oil.nvim', config = function()
+          require('oil').setup() 
+      end
+  })
 
   use({
       'jose-elias-alvarez/null-ls.nvim',
@@ -64,7 +75,7 @@ return require('packer').startup(function(use)
 
   use('simrat39/rust-tools.nvim')
 
-  use {
+  use({
 	  'VonHeikemen/lsp-zero.nvim',
 	  branch = 'v1.x',
 	  requires = {
@@ -85,6 +96,6 @@ return require('packer').startup(function(use)
 		  {'L3MON4D3/LuaSnip'},             -- Required
 		  {'rafamadriz/friendly-snippets'}, -- Optional
 	  }
-  }
+  })
 
 end)
