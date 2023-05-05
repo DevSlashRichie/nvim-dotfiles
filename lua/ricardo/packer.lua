@@ -57,12 +57,13 @@ return require('packer').startup(function(use)
       end
   })
 
-
+  --[[
   use({
       'stevearc/oil.nvim', config = function()
           require('oil').setup() 
       end
   })
+  --]]
 
   use({
       'jose-elias-alvarez/null-ls.nvim',
