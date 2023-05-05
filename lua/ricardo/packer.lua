@@ -33,29 +33,7 @@ return require('packer').startup(function(use)
 
   use('easymotion/vim-easymotion')
 
-  use({
-      'windwp/nvim-ts-autotag',
-      config = function()
-          require('nvim-ts-autotag').setup()
-      end
-  })
-
-  use({
-    'm4xshen/autoclose.nvim',
-    config = function() 
-        require('autoclose').setup()
-    end
-  })
-
   use('f-person/git-blame.nvim')
-
-  use({
-      'akinsho/git-conflict.nvim', 
-      tag = "*", 
-      config = function()
-          require('git-conflict').setup()
-      end
-  })
 
   --[[
   use({
@@ -100,5 +78,6 @@ return require('packer').startup(function(use)
   })
 
   use('github/copilot.vim')
+  use('tpope/vim-sleuth')
 
 end)

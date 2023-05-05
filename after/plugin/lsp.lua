@@ -3,14 +3,18 @@ local lsp = require("lsp-zero")
 lsp.preset('recommended')
 
 lsp.ensure_installed({
-	'tsserver',
-	'eslint',
+    'tsserver',
+    'eslint',
 })
 
-lsp.format_on_save({
-    servers = {
-        ['lua_ls'] = {'lua'},
-    }
+lsp.configure('lua-language-server', {
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = {'vim'},
+            },
+        },
+    },
 })
 
 local cmp = require('cmp')
@@ -22,6 +26,9 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 	['<C-Space>'] = cmp.mapping.complete(),
 })
 
+cmp_mappings['<Tab>'] = nil
+cmp_mappings['<S-Tab>'] = nil
+ 
 lsp.setup_nvim_cmp({
 	mapping = cmp_mappings,
 })
@@ -46,6 +53,10 @@ end)
 local lsp_rust = lsp.build_options('rust_analyzer', {})
 
 lsp.setup()
+
+vim.diagnostic.config({
+    virtual_text = true
+})
 
 local null_ls = require('null-ls')
 local null_opts = lsp.build_options('null-ls', {})
