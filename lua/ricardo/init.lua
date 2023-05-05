@@ -1,2 +1,2 @@
-require("ricardo.remap")
 require("ricardo.set")
+require("ricardo.remap")
