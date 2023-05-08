@@ -23,6 +23,8 @@ return require('packer').startup(function(use)
 
   use ({ 'nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'} })
 
+  use('nvim-treesitter/nvim-treesitter-context')
+
   use('theprimeagen/harpoon')
 
   use('mbbill/undotree')
@@ -79,5 +81,17 @@ return require('packer').startup(function(use)
 
   use('github/copilot.vim')
   use('tpope/vim-sleuth')
+
+
+  use({
+      'folke/trouble.nvim',
+      config = function()
+          require('trouble').setup {
+              icons = false,
+          }
+      end
+  })
+   
+
 
 end)
