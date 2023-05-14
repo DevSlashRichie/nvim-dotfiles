@@ -30,7 +30,12 @@ cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
  
 lsp.setup_nvim_cmp({
-	mapping = cmp_mappings,
+    mapping = cmp_mappings,
+    sources = {
+        { name = 'nvim_lsp' },
+        { name = 'path' },
+        { name = 'luasnip', keyword_length = 2 },
+    }
 })
 
 lsp.on_attach(function(client, bufnr)

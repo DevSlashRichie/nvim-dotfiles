@@ -1,0 +1,10 @@
+[16:30:42 2023-05-11] FETCHING Version 2.18.1
+[16:30:42 2023-05-11] CREATING /home/ricardo/.spicetify
+[16:30:42 2023-05-11] DOWNLOADING https://github.com/spicetify/spicetify-cli/releases/download/v2.18.1/spicetify-2.18.1-linux-amd64.tar.gz
+[16:30:43 2023-05-11] EXTRACTING /home/ricardo/.spicetify/spicetify.tar.gz
+[16:30:43 2023-05-11] SETTING EXECUTABLE PERMISSIONS TO /home/ricardo/.spicetify/spicetify
+[16:30:43 2023-05-11] REMOVING /home/ricardo/.spicetify/spicetify.tar.gz
+[16:30:43 2023-05-11] APPENDING /home/ricardo/.spicetify to PATH in /home/ricardo/.zshrc
+[16:30:43 2023-05-11] Restart your shell to have spicetify in your PATH.
+[16:30:43 2023-05-11] spicetify v2.18.1 was installed successfully to /home/ricardo/.spicetify
+[16:30:43 2023-05-11] Run 'spicetify --help' to get started

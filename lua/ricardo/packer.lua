@@ -14,11 +14,19 @@ return require('packer').startup(function(use)
     })
 
     use({ 
-	'rose-pine/neovim',
-	as = 'rose-pine',
-	config = function()
-	    vim.cmd('colorscheme rose-pine')
-	end
+        'catppuccin/nvim',
+        as = 'catppuccin',
+        config = function()
+            --vim.cmd('colorscheme catppuccin')
+        end
+    })
+
+    use({ 
+        'rose-pine/neovim',
+        as = 'rose-pine',
+        config = function()
+            vim.cmd('colorscheme rose-pine')
+        end
     })
 
     use ({ 'nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'} })
@@ -101,5 +109,7 @@ return require('packer').startup(function(use)
 	    require("coverage").setup()
 	end,
     })
+
+    use('christoomey/vim-tmux-navigator')
 
 end)
