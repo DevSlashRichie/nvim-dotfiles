@@ -1,10 +1,12 @@
 local lsp = require("lsp-zero")
+local lih = require("lsp-inlayhints")
 
 lsp.preset('recommended')
 
 lsp.ensure_installed({
     'tsserver',
     'eslint',
+    'rust_analyzer'
 })
 
 lsp.configure('lua-language-server', {
@@ -15,6 +17,23 @@ lsp.configure('lua-language-server', {
             },
         },
     },
+})
+
+lsp.configure('tsserver', {
+    settings = {
+        typescript = {
+            inlayHints = {
+                includeInlayParameterNameHints = 'all',
+                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = true,
+                includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+            }
+        },
+    }
 })
 
 local cmp = require('cmp')
@@ -53,10 +72,10 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
     vim.keymap.set("n", "<A-Enter>", function() vim.lsp.buf.code_action() end, opts)
 
+    lih.on_attach(client, bufnr)
 end)
 
-local lsp_rust = lsp.build_options('rust_analyzer', {})
-
+lih.setup()
 lsp.setup()
 
 vim.diagnostic.config({
@@ -76,5 +95,6 @@ null_ls.setup({
     }
 })
 
-
-require('rust-tools').setup({server = lsp_rust})
+--- we don't need rust tools for now as we are using inlay hints
+--- local lsp_rust = lsp.build_options('rust_analyzer')
+--- require('rust-tools').setup({server = lsp_rust})

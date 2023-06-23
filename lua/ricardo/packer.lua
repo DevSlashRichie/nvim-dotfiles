@@ -64,6 +64,9 @@ return require('packer').startup(function(use)
 
     use('simrat39/rust-tools.nvim')
 
+    use('nvim-lua/plenary.nvim')
+    use('mfussenegger/nvim-dap')
+
     use({
 	'VonHeikemen/lsp-zero.nvim',
 	branch = 'v1.x',
@@ -111,5 +114,7 @@ return require('packer').startup(function(use)
     })
 
     use('christoomey/vim-tmux-navigator')
+
+    use('lvimuser/lsp-inlayhints.nvim')
 
 end)
