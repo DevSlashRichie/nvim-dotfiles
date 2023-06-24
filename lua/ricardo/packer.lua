@@ -117,4 +117,6 @@ return require('packer').startup(function(use)
 
     use('lvimuser/lsp-inlayhints.nvim')
 
+    use('echasnovski/mini.surround')
+
 end)
