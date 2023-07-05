@@ -7,3 +7,4 @@ vim.keymap.set("v", "<leader>pp", '"+p')
 vim.keymap.set("n", "<leader>pp", '"+p')
 
 vim.keymap.set("n", "<S-Tab>", ":tabnext<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>rs", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])

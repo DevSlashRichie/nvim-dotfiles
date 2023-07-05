@@ -95,7 +95,6 @@ return require('packer').startup(function(use)
     --- Used for fixing indents
     use('tpope/vim-sleuth')
 
-
     use({
 	'folke/trouble.nvim',
 	config = function()
