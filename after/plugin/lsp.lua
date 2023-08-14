@@ -3,7 +3,10 @@ local lih = require("lsp-inlayhints")
 
 lsp.preset('recommended')
 
-lsp.ensure_installed({
+local mlsp = require("mason-lspconfig")
+local lspconfig = require("lspconfig")
+
+mlsp.setup({
     'tsserver',
     'eslint',
     'rust_analyzer'
@@ -13,7 +16,7 @@ lsp.configure('lua-language-server', {
     settings = {
         Lua = {
             diagnostics = {
-                globals = {'vim'},
+                globals = { 'vim' },
             },
         },
     },
@@ -37,28 +40,27 @@ lsp.configure('tsserver', {
 })
 
 local cmp = require('cmp')
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
-	['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-	['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-	['<C-y>'] = cmp.mapping.confirm({ select = true }),
-	['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+    ['<C-Space>'] = cmp.mapping.complete(),
 })
 
 cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
- 
+
 lsp.setup_nvim_cmp({
     mapping = cmp_mappings,
     sources = {
         { name = 'nvim_lsp' },
         { name = 'path' },
-        { name = 'luasnip', keyword_length = 2 },
     }
 })
 
 lsp.on_attach(function(client, bufnr)
-    local opts = {buffer = buffnr, remap = false}
+    local opts = { buffer = buffnr, remap = false }
 
     --- vim.keymap.set("n", "<C-b>", function() vim.lsp.buf.definition() end, opts)
     vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
@@ -92,8 +94,11 @@ null_ls.setup({
     end,
     sources = {
         null_ls.builtins.formatting.black,
+        null_ls.builtins.formatting.rustywind
     }
 })
+
+vim.keymap.set("n", "<leader>fr", function() vim.lsp.buf.format() end)
 
 --- we don't need rust tools for now as we are using inlay hints
 --- local lsp_rust = lsp.build_options('rust_analyzer')
