@@ -94,7 +94,8 @@ null_ls.setup({
     end,
     sources = {
         null_ls.builtins.formatting.black,
-        null_ls.builtins.formatting.rustywind
+        null_ls.builtins.formatting.rustywind,
+        null_ls.builtins.formatting.rustfmt,
     }
 })
 
