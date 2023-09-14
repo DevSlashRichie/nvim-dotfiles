@@ -14,3 +14,7 @@ vim.keymap.set("n", "<leader>vrr", "<cmd>TroubleToggle lsp_references<cr>",
 vim.keymap.set("n", "<C-b>", "<cmd>TroubleToggle lsp_definitions<cr>",
   {silent = true, noremap = true}
 )
+
+vim.keymap.set("n", "<leader>vrf", "<cmd>TroubleRefresh<cr>",
+  {silent = true, noremap = true}
+)
