@@ -72,7 +72,7 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
     vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
     vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
-    vim.keymap.set("n", "<A-Enter>", function() vim.lsp.buf.code_action() end, opts)
+    --- vim.keymap.set("n", "<A-Enter>", function() vim.lsp.buf.code_action() end, opts)
 
     lih.on_attach(client, bufnr)
 end)

@@ -1,5 +1,3 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
-
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
@@ -29,7 +27,13 @@ return require('packer').startup(function(use)
         end
     })
 
-    use ({ 'nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'} })
+    use ({ 
+	'nvim-treesitter/nvim-treesitter', 
+	run = function()
+	    local ts_install = require('nvim-treesitter.install').update({ with_sync = true  }) 
+	    ts_install()
+	end
+    })
 
     use('nvim-treesitter/nvim-treesitter-context')
 
@@ -117,5 +121,9 @@ return require('packer').startup(function(use)
     use('lvimuser/lsp-inlayhints.nvim')
 
     use('echasnovski/mini.surround')
+
+    use('cohama/lexima.vim')
+
+    use('weilbith/nvim-code-action-menu')
 
 end)
