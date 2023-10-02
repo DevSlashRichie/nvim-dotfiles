@@ -10,3 +10,6 @@ vim.keymap.set("n", "<S-Tab>", ":tabnext<CR>", { noremap = true })
 vim.keymap.set("n", "<leader>rs", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 vim.keymap.set("n", "q", "<Nop>", { noremap = true })
+
+vim.keymap.set("n", "gl", ":diffget //2<CR>")
+vim.keymap.set("n", "gr", ":diffget //3<CR>")
