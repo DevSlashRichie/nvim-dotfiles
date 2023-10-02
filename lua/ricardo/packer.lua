@@ -126,4 +126,6 @@ return require('packer').startup(function(use)
 
     use('weilbith/nvim-code-action-menu')
 
+    use('stevearc/oil.nvim')
+
 end)
