@@ -23,7 +23,7 @@ return require('packer').startup(function(use)
         'rose-pine/neovim',
         as = 'rose-pine',
         config = function()
-            vim.cmd('colorscheme rose-pine')
+            --vim.cmd('colorscheme rose-pine')
         end
     })
 
@@ -129,5 +129,22 @@ return require('packer').startup(function(use)
     use('stevearc/oil.nvim')
 
     use('andweeb/presence.nvim')
+
+    use('wakatime/vim-wakatime')
+
+    use({
+	'akinsho/git-conflict.nvim',
+	tag = "*",
+	config = function()
+	    require("git-conflict").setup()
+	end
+    })
+
+    use({
+	'kdheepak/lazygit.nvim',
+	require = {
+	    'kdheepak/lazygit.nvim'
+	}
+    })
 
 end)

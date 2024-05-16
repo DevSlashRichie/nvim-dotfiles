@@ -23,3 +23,10 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
+
+require'treesitter-context'.setup{
+  enable = true,
+  max_lines = 2,
+  line_numbers = true,
+  mode = "cursor",
+}
